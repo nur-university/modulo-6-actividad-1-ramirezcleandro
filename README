@@ -1,0 +1,46 @@
+# API Gateway - Spring Cloud Gateway (WebFlux)
+
+## 📌 Descripción
+
+Este proyecto implementa un **API Gateway** utilizando **Spring Boot + Spring Cloud Gateway (WebFlux)**.
+
+El gateway realiza el ruteo y protección de los siguientes endpoints:
+
+| Endpoint de Entrada | ¿Requiere Bearer Token? | Acción |
+|---------------------|-------------------------|--------|
+| POST /api/login     | NO                      | Genera un Bearer Token en base a credenciales enviadas |
+| GET /api/users      | SI                      | Redirecciona a https://jsonplaceholder.typicode.com/users |
+| GET /api/posts      | SI                      | Redirecciona a https://jsonplaceholder.typicode.com/posts |
+
+La solución:
+- No utiliza base de datos
+- Usa credenciales estáticas
+- Genera un token tipo Bearer
+- Protege los endpoints usando un filtro global
+- Está preparada para ejecutarse con Docker
+
+---
+
+## 🏗Arquitectura
+
+La aplicación funciona como un **Gateway central** que:
+
+1. Expone endpoints internos (`/api/*`)
+2. Valida autenticación mediante Bearer Token
+3. Redirecciona solicitudes válidas a servicios externos
+4. Bloquea solicitudes sin token válido
+
+Tecnología utilizada:
+- Java 25
+- Spring Boot 4.0.2
+- Spring Cloud Gateway (WebFlux)
+- Gradle Wrapper
+- Docker
+- Docker Compose
+
+---
+
+## 🔐 Credenciales estáticas
+
+username: demo
+password: demo123
